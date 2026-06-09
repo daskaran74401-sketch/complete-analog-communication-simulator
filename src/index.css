@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg-primary: #080f24;
+    --color-bg-secondary: #0d1b3e;
+    --color-bg-card: rgba(255, 255, 255, 0.05);
+    --color-accent: #22d3ee;
+    --color-accent-dim: rgba(34, 211, 238, 0.15);
+    --color-text-primary: #f0f4ff;
+    --color-text-muted: #94a3b8;
+    --color-border: rgba(255, 255, 255, 0.08);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0d1b3e;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e3a5f;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #22d3ee;
+  }
+}
+
+@layer components {
+  /* Glass card */
+  .glass-card {
+    @apply bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-200;
+  }
+  .glass-card-hover:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(34, 211, 238, 0.3);
+  }
+
+  /* Slider styling */
+  .slider-cyan {
+    @apply w-full h-2 rounded-full appearance-none cursor-pointer;
+    background: linear-gradient(to right, #22d3ee var(--val, 50%), rgba(255,255,255,0.1) var(--val, 50%));
+    outline: none;
+  }
+
+  .slider-cyan::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #22d3ee;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+    border: 2px solid white;
+    transition: box-shadow 0.2s;
+  }
+
+  .slider-cyan::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 14px rgba(34, 211, 238, 0.9);
+  }
+
+  .slider-cyan::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #22d3ee;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+  }
+
+  /* Input field */
+  .input-dark {
+    @apply bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white
+           focus:outline-none focus:border-cyan-400/60 transition-colors;
+  }
+  .input-dark:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Badge variants */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-success  { @apply badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30; }
+  .badge-warning  { @apply badge bg-yellow-500/20  text-yellow-400  border border-yellow-500/30;  }
+  .badge-danger   { @apply badge bg-red-500/20     text-red-400     border border-red-500/30;     }
+  .badge-info     { @apply badge bg-cyan-500/20    text-cyan-400    border border-cyan-500/30;    }
+  .badge-purple   { @apply badge bg-purple-500/20  text-purple-400  border border-purple-500/30;  }
+
+  /* Section heading */
+  .section-heading {
+    @apply text-lg font-semibold text-white border-b border-white/10 pb-3 mb-4;
+  }
+
+  /* Stat value */
+  .stat-value {
+    @apply font-mono text-2xl font-bold text-cyan-400;
+  }
+
+  /* Recharts override – transparent chart background */
+  .recharts-wrapper .recharts-surface {
+    overflow: visible;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #22d3ee, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  }
+
+  .border-glow {
+    box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.3);
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(34,211,238,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34,211,238,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
